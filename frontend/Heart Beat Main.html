@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Disease Risk Prediction Estimator</title>
+  <link rel="stylesheet" href="Heart Beat Style.css" />
+  <link rel="stylesheet" href="Heart Beat Media Queries.css" />
+</head>
+<body>
+  <nav id="desktop-nav">
+    <div class="logo">
+      <h style="color: white;"> Heart </h> <h style="color: #b22222;"> Beat </h>
+    </div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="Heart Beat Forms.html">Prediction Form</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav id="hamburger-nav">
+    <div class="logo">
+      <h style="color: white;">Heart </h><h style="color: #b22222;">Beat</h>
+    </div>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu-links">
+        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        <li><a href="Heart Beat Forms.html" onclick="toggleMenu()">Prediction Form</a></li>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="section-home">
+    <div class="home-content">
+      <h1>Welcome to the <span style="color: #ff0000;">Heart </span> <span style="color: #c70000;"> Beat: </span> A Heart Disease Risk Prediction Estimator</h1>
+      <p>
+        Utilize clinical data and latest techniques to predict heart disease risk.
+        Featuring hybrid monitoring with real-time wearable sensor integration.
+      </p>
+      <a href="Heart Beat Forms.html" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <section id="about" style="margin: 4rem auto; color: rgb(255, 0, 0); max-width: 800px; text-align: center;">
+    <h1 class="title" style="color: #8f0000;">About This Project</h1>
+    <p>
+      This estimator predicts heart disease presence from patient clinical data using advanced classification methods with decision trees. It innovates by incorporating real-time wearable sensor data for hybrid continuous monitoring and improved accuracy.
+    </p>
+  </section>
+
+  <section id="contact" style="margin: 4rem auto; color: rgb(255, 0, 0); max-width: 800px; text-align: center;">
+    <h1 class="title" style="color: #8f0000;">Contact</h1>
+    <p>Email: <a href="mailto:your.email@example.com" style="color: #e90000;">23-00941@g.batstate-u.edu.ph</a></p>
+  </section>
+
+  <footer style="text-align: center; padding: 2rem; background-color: #8b0000; color: white;">
+    <p>Copyright &#169; 2025 Heart Disease Risk Estimator. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector(".menu-links");
+      const icon = document.querySelector(".hamburger-icon");
+      menu.classList.toggle("open");
+      icon.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>
+

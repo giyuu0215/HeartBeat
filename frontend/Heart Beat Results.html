@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Disease Risk Prediction Results</title>
+  <link rel="stylesheet" href="Heart Beat Style.css" />
+  <link rel="stylesheet" href="Heart Beat Media Queries.css" />
+  <style>
+    #results-container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #fff0f0;
+      border: 2px solid #b22222;
+      border-radius: 8px;
+      color: #800000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0 0 10px rgba(178, 34, 34, 0.3);
+      text-align: center;
+    }
+    #results-container h1 {
+      color: #8a0000;
+      margin-bottom: 1.5rem;
+    }
+    #results-container p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    text-align: left;
+    }
+    #results-container p .label {
+    color: #c70000;
+    font-weight: 700;
+    margin-right: 0.5em;
+    }
+    #results-container p .value {
+    color: #161616;
+    }
+    #back-home-btn {
+      margin-top: 2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav id="desktop-nav">
+    <div class="logo">
+      <h style="color: white;"> Heart </h> <h style="color: #b22222;"> Beat </h>
+    </div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="Heart Beat Main.html">Home</a></li>
+        <li><a href="Heart Beat Forms.html">Prediction Form</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav id="hamburger-nav">
+    <div class="logo">
+      <h style="color: white;">Heart </h><h style="color: #b22222;">Beat</h>
+    </div>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu-links">
+        <li><a href="Heart Beat Main.html" onclick="toggleMenu()">Home</a></li>
+        <li><a href="Heart Beat Forms.html" onclick="toggleMenu()">Prediction Form</a></li>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+      </div>
+    </div>
+  </nav>
+
+  <section id="results-container">
+    <h1>Heart Disease Risk Prediction Results</h1>
+    <div id="result">
+      Loading results...
+    </div>
+    <button id="back-home-btn" class="btn btn-primary" onclick="goBackHome()">Go Back Home</button>
+  </section>
+
+  <footer style="text-align: center; padding: 2rem; background-color: #8b0000; color: white;">
+    <p>Copyright &#169; 2025 Heart Disease Risk Estimator. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector(".menu-links");
+      const icon = document.querySelector(".hamburger-icon");
+      menu.classList.toggle("open");
+      icon.classList.toggle("open");
+    }
+
+    function goBackHome() {
+      window.location.href = 'Heart Beat Main.html';
+    }
+
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.substring(1);
+      const vars = queryString.split("&");
+      for (let i = 0; i < vars.length; i++) {
+        const pair = vars[i].split("=");
+        if (pair.length === 2) {
+          params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1].replace(/\+/g, ' '));
+        }
+      }
+      return params;
+    }
+
+    window.onload = function() {
+      const params = getQueryParams();
+      const resultDiv = document.getElementById('result');
+      if (Object.keys(params).length === 0) {
+        resultDiv.innerHTML = "<p>No data provided. Please use the prediction form to submit patient data.</p>";
+        return;
+      }
+      let html = '';
+      html += `<p><span class="label"><strong>Patient ID:</strong></span><span class="value"> ${params.id || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Age:</strong></span><span class="value"> ${params.age || 'N/A'}</p>`;
+      html += `<p><span class="label"><strong>Place of Study:</strong></span><span class="value"> ${params.origin || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Sex:</strong></span><span class="value"> ${params.sex || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Chest Pain Type:</strong></span><span class="value"> ${params.cp || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Resting Blood Pressure:</strong></span><span class="value"> ${params.trestbps ? params.trestbps + ' mm Hg' : 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Serum Cholesterol:</strong></span><span class="value"> ${params.chol ? params.chol + ' mg/dl' : 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Fasting Blood Sugar &gt; 120 mg/dl:</strong></span><span class="value"> ${params.fbs || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Resting Electrocardiographic Results:</strong></span><span class="value"> ${params.restecg || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Maximum Heart Rate Achieved:</strong></span><span class="value"> ${params.thalach ? params.thalach + ' bpm' : 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Exercise-Induced Angina:</strong></span><span class="value"> ${params.exang || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>ST Depression Induced by Exercise:</strong></span><span class="value"> ${params.oldpeak || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Slope of Peak Exercise ST Segment:</strong></span><span class="value"> ${params.slope || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Number of Major Vessels:</strong></span><span class="value"> ${params.ca || 'N/A'}</span></p>`;
+      html += `<p><span class="label"><strong>Thal:</strong></span><span class="value"> ${params.thal || 'N/A'}</span></p>`;
+      if(params.risk_percent !== undefined && params.risk_level !== undefined) {
+        html += `<hr><p><span class='label'><strong>Predicted Heart Disease Risk:</strong></span> <span class='value'>${params.risk_percent}%</span></p>`;
+        html += `<p><span class='label'><strong>Risk Level:</strong></span> <span class='value'>${params.risk_level}</span></p>`;
+      }
+      resultDiv.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
+

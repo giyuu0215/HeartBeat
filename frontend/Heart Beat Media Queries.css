@@ -1,0 +1,118 @@
+@media screen and (max-width: 1400px) {
+  #home {
+      height: auto;
+      padding: 4rem 5vw;
+  }
+  #form {
+      margin-bottom: 6rem;
+  }
+  .about-containers {
+      flex-wrap: wrap;
+  }
+  #contact,
+  #projects {
+      height: fit-content;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+      background-size: cover;
+      background-position: center top;
+      background-attachment: scroll;
+  }
+}
+
+/* MEDIA QUERIES */
+
+/* General Styles for Mobile Devices */
+@media (max-width: 900px) {
+  nav#desktop-nav {
+      display: none;
+  }
+
+  #hamburger-nav {
+      display: flex;
+  }
+
+  .section-home {
+      height: auto;
+      padding: 4rem 2rem;
+  }
+
+  .home-content h1 {
+      font-size: 2.5rem;
+  }
+
+  .home-content p {
+      font-size: 1.2rem;
+  }
+
+  .btn-primary {
+      display: flex;
+      padding: 0.8rem 1.5rem;
+      justify-content: center;
+      font-size: 1rem;
+  }
+
+  #form {
+      width: 90%;
+      margin: 2rem auto;
+  }
+
+  .aesthetic-form {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+  }
+
+  .form-row {
+      margin-bottom: 1rem;
+  }
+
+  #about,
+  #contact {
+      padding: 2rem 1rem;
+  }
+
+  #about h1,
+  #contact h1 {
+      font-size: 2rem;
+  }
+
+  #about p,
+  #contact p {
+      font-size: 1rem;
+  }
+}
+
+/* Styles for Extra Small Devices */
+@media (max-width: 400px) {
+  .btn-primary {
+      display: flex;
+      font-size: 0.9rem;
+      justify-content: center;
+      padding: 0.6rem 1.2rem;
+  }
+
+  .title {
+      font-size: 1.8rem;
+  }
+
+  .home-content h1 {
+      font-size: 2rem;
+  }
+
+  #about p,
+  #contact p {
+      font-size: 0.9rem;
+  }
+
+  .form-row label {
+      font-size: 0.9rem;
+  }
+
+  .aesthetic-form input,
+  .aesthetic-form select {
+      font-size: 0.9rem; 
+  }
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Disease Risk Prediction Form</title>
+  <link rel="stylesheet" href="Heart Beat Style.css" />
+  <link rel="stylesheet" href="Heart Beat Media Queries.css" />
+</head>
+<body>
+  <nav id="desktop-nav">
+    <div class="logo">
+      <h style="color: white;"> Heart </h> <h style="color: #b22222;"> Beat </h>
+    </div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="Heart Beat Main.html">Home</a></li>
+        <li><a href="Heart Beat Forms.html">Prediction Form</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav id="hamburger-nav">
+    <div class="logo">
+      <h style="color: white;">Heart </h><h style="color: #b22222;">Beat</h>
+    </div>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu-links">
+        <li><a href="Heart Beat Main.html" onclick="toggleMenu()">Home</a></li>
+        <li><a href="Heart Beat Forms.html" onclick="toggleMenu()">Prediction Form</a></li>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+      </div>
+    </div>
+  </nav>
+
+  <section id="form">
+    <h1 class="title" style="color: #920606;"> <span style="color: #ff0000;">Heart Disease</span> Risk Prediction Form</h1>
+    <form id="predictionForm" class="aesthetic-form" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <label for="id" title="A unique code or number to identify this patient in your records.">Patient ID</label>
+        <input type="text" id="id" name="id" required placeholder="Unique Patient ID" title="A unique code or number to identify this patient in your records." />
+      </div>
+
+      <div class="form-row">
+        <label for="age" title="Enter your age in years.">Age</label>
+        <input type="number" id="age" name="age" required placeholder="Years" title="Enter your age in years." />
+      </div>
+
+      <div class="form-row">
+        <label for="origin" title="The location or hospital where your data was collected.">Place of Study</label>
+        <input type="text" id="origin" name="origin" required placeholder="Location" title="The location or hospital where your data was collected." />
+      </div>
+
+      <div class="form-row">
+        <label for="sex" title="Select your biological sex.">Sex</label>
+        <select id="sex" name="sex" required title="Select your biological sex.">
+          <option value="" disabled selected>Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="cp" title="Choose the type of chest pain you experience: Typical angina (brought on by exertion), Atypical angina (not always related to exertion), Non-anginal pain (not related to the heart), or Asymptomatic (no chest pain). Typical angina is most associated with heart disease.">Chest Pain Type</label>
+        <select id="cp" name="cp" required title="Choose the type of chest pain you experience: Typical angina (brought on by exertion), Atypical angina (not always related to exertion), Non-anginal pain (not related to the heart), or Asymptomatic (no chest pain). Typical angina is most associated with heart disease.">
+          <option value="" disabled selected>Select</option>
+          <option value="typical angina">Typical Angina</option>
+          <option value="atypical angina">Atypical Angina</option>
+          <option value="non-anginal">Non-Anginal</option>
+          <option value="asymptomatic">Asymptomatic</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="trestbps" title="Enter your resting (systolic) blood pressure in mm Hg. High blood pressure (above 130 mm Hg) increases heart disease risk.">Resting Blood Pressure (mm Hg)</label>
+        <input type="number" id="trestbps" name="trestbps" required placeholder="mmHg" title="Enter your resting (systolic) blood pressure in mm Hg. High blood pressure (above 130 mm Hg) increases heart disease risk." />
+      </div>
+
+      <div class="form-row">
+        <label for="chol" title="Enter your serum cholesterol in mg/dl. High cholesterol (above 200 mg/dl) can increase your risk of heart disease.">Serum Cholesterol (mg/dl)</label>
+        <input type="number" id="chol" name="chol" required placeholder="mg/dl" title="Enter your serum cholesterol in mg/dl. High cholesterol (above 200 mg/dl) can increase your risk of heart disease." />
+      </div>
+
+      <div class="form-row">
+        <label for="fbs" title="Is your fasting blood sugar greater than 120 mg/dl? If you have diabetes or high blood sugar, select 'True'. Diabetes is a major risk factor for heart disease.">Fasting Blood Sugar &gt; 120 mg/dl</label>
+        <select id="fbs" name="fbs" required title="Is your fasting blood sugar greater than 120 mg/dl? If you have diabetes or high blood sugar, select 'True'. Diabetes is a major risk factor for heart disease.">
+          <option value="" disabled selected>Select</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="restecg" title="Select your resting ECG result: Normal, ST-T wave abnormality (may indicate heart stress), or Left ventricular hypertrophy (thickened heart muscle). Abnormal results may suggest heart problems.">Resting Electrocardiographic Results</label>
+        <select id="restecg" name="restecg" required title="Select your resting ECG result: Normal, ST-T wave abnormality (may indicate heart stress), or Left ventricular hypertrophy (thickened heart muscle). Abnormal results may suggest heart problems.">
+          <option value="" disabled selected>Select</option>
+          <option value="normal">Normal</option>
+          <option value="stt abnormality">STT Abnormality</option>
+          <option value="iv hypertrophy">IV Hypertrophy</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="thalach" title="Enter the highest heart rate (in bpm) you achieved during exercise. Lower values may indicate limited heart function.">Maximum Heart Rate Achieved</label>
+        <input type="number" id="thalach" name="thalach" required placeholder="bpm" title="Enter the highest heart rate (in bpm) you achieved during exercise. Lower values may indicate limited heart function." />
+      </div>
+
+      <div class="form-row">
+        <label for="exang" title="Did you experience chest pain (angina) during exercise? Select 'True' if yes. Exercise-induced angina is a warning sign for heart disease.">Exercise-Induced Angina</label>
+        <select id="exang" name="exang" required title="Did you experience chest pain (angina) during exercise? Select 'True' if yes. Exercise-induced angina is a warning sign for heart disease.">
+          <option value="" disabled selected>Select</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="oldpeak" title="Enter the amount of ST depression (in mm) seen on your ECG after exercise compared to rest. Higher values may indicate more severe heart disease.">ST Depression Induced by Exercise</label>
+        <input type="number" step="0.1" id="oldpeak" name="oldpeak" required placeholder="Value" title="Enter the amount of ST depression (in mm) seen on your ECG after exercise compared to rest. Higher values may indicate more severe heart disease." />
+      </div>
+
+      <div class="form-row">
+        <label for="slope" title="Enter the slope of the peak exercise ST segment: 1 = upsloping (usually normal), 2 = flat (may indicate heart disease), 3 = downsloping (higher risk). If unsure, ask your doctor.">Slope of Peak Exercise ST Segment</label>
+        <input type="number" id="slope" name="slope" required title="Enter the slope of the peak exercise ST segment: 1 = upsloping (usually normal), 2 = flat (may indicate heart disease), 3 = downsloping (higher risk). If unsure, ask your doctor." />
+      </div>
+
+      <div class="form-row">
+        <label for="ca" title="Enter the number of major blood vessels (0-3) shown by X-ray to have blood flow. Higher numbers may indicate more severe heart disease.">Number of Major Vessels (0-3)</label>
+        <input type="number" id="ca" name="ca" min="0" max="3" required title="Enter the number of major blood vessels (0-3) shown by X-ray to have blood flow. Higher numbers may indicate more severe heart disease." />
+      </div>
+
+      <div class="form-row">
+        <label for="thal" title="Select your thalassemia test result: Normal, Fixed defect (permanent damage), or Reversible defect (temporary issue). Abnormal results may indicate heart disease.">Thal</label>
+        <select id="thal" name="thal" required title="Select your thalassemia test result: Normal, Fixed defect (permanent damage), or Reversible defect (temporary issue). Abnormal results may indicate heart disease.">
+          <option value="" disabled selected>Select</option>
+          <option value="normal">Normal</option>
+          <option value="fixed defect">Fixed Defect</option>
+          <option value="reversible defect">Reversible Defect</option>
+        </select>
+      </div>
+
+      <div class="form-row form-actions">
+        <button type="submit" class="btn btn-primary">Predict</button>
+      </div>
+    </form>
+  </section>
+
+  <footer style="text-align: center; padding: 2rem; background-color: #8b0000; color: white;">
+    <p>Copyright &#169; 2025 Heart Disease Risk Estimator. All rights reserved.</p>
+  </footer>
+
+  <script>
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      // Map form values to model input order and encoding
+      const sexMap = { 'male': 1, 'female': 0 };
+      const cpMap = {
+        'typical angina': 1,
+        'atypical angina': 2,
+        'non-anginal': 3,
+        'asymptomatic': 0
+      };
+      const fbsMap = { 'true': 1, 'false': 0 };
+      const restecgMap = {
+        'normal': 0,
+        'stt abnormality': 1,
+        'iv hypertrophy': 2
+      };
+      const exangMap = { 'true': 1, 'false': 0 };
+      const thalMap = {
+        'normal': 1,
+        'fixed defect': 2,
+        'reversible defect': 3
+      };
+      const data = {};
+      formData.forEach((value, key) => { data[key] = value; });
+      const features = [
+        Number(data.age),
+        sexMap[data.sex],
+        cpMap[data.cp],
+        Number(data.trestbps),
+        Number(data.chol),
+        fbsMap[data.fbs],
+        restecgMap[data.restecg],
+        Number(data.thalach),
+        exangMap[data.exang],
+        Number(data.oldpeak),
+        Number(data.slope),
+        Number(data.ca),
+        thalMap[data.thal]
+      ];
+      // Call backend API
+      const response = await fetch('http://localhost:5000/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ features })
+      });
+      if (!response.ok) {
+        alert('Prediction failed. Please check your backend server.');
+        return;
+      }
+      const result = await response.json();
+      // Redirect to results page with risk info
+      const params = new URLSearchParams({
+        ...data,
+        risk_percent: Number(result.risk_percent).toFixed(2),
+        risk_level: result.risk_level
+      });
+      window.location.href = `Heart Beat Results.html?${params.toString()}`;
+    }
+    function toggleMenu() {
+      const menu = document.querySelector(".menu-links");
+      const icon = document.querySelector(".hamburger-icon");
+      menu.classList.toggle("open");
+      icon.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>
